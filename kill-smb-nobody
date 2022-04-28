@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# Used to kill the 'nobody' users that accumulate on a samba server 
+
+smbstatus -p | awk '/nobody/ {
+     printf("smbcontrol smbd  kill-client-ip %s\t# %s %s %s %s\n",$4,$1,$2,$3,$4);
+}'
